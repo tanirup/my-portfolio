@@ -1,0 +1,179 @@
+/* app/humberger/menu.module.css */
+
+.root {
+    position: relative;
+  }
+  
+  /* --- Trigger button (☰) --- */
+  .trigger {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    background: rgba(255, 255, 255, 0.85);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 180ms ease, border-color 180ms ease;
+  }
+  
+  .trigger:hover {
+    transform: translateY(-1px);
+    border-color: rgba(0, 0, 0, 0.32);
+  }
+  
+  .icon {
+    width: 18px;
+    height: 14px;
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .bar {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 2px;
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+  
+  /* X animation */
+  .barTopOpen {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .barMidOpen {
+    opacity: 0;
+  }
+  .barBotOpen {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+  
+  /* --- Overlay --- */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease;
+    z-index: 9998;
+  }
+  
+  .overlayOpen {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  /* --- Panel --- */
+  .panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100svh;
+    width: min(320px, 88vw);
+    background: #ffffff;
+    border-left: 1px solid rgba(0, 0, 0, 0.12);
+    transform: translateX(110%);
+    transition: transform 220ms ease;
+    z-index: 9999;
+    padding: 18px 16px;
+  }
+  
+  .panelOpen {
+    transform: translateX(0);
+  }
+  
+  .panelHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  
+  .panelTitle {
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.6);
+  }
+  
+  .close {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.14);
+    background: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+  }
+  
+  /* --- Links --- */
+  .nav {
+    display: grid;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .link {
+    padding: 12px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.9);
+    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+  }
+  
+  .link:hover {
+    transform: translateY(-1px);
+    border-color: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.03);
+  }
+  
+  .hint {
+    margin-top: 16px;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+  }
+  
+  /* --- Dark mode --- */
+  @media (prefers-color-scheme: dark) {
+    .trigger {
+      background: rgba(10, 10, 10, 0.85);
+      border-color: rgba(255, 255, 255, 0.16);
+    }
+  
+    .bar {
+      background: rgba(255, 255, 255, 0.92);
+    }
+  
+    .panel {
+      background: #0a0a0a;
+      border-left-color: rgba(255, 255, 255, 0.16);
+    }
+  
+    .panelTitle,
+    .hint {
+      color: rgba(255, 255, 255, 0.6);
+    }
+  
+    .close {
+      background: rgba(10, 10, 10, 0.85);
+      border-color: rgba(255, 255, 255, 0.16);
+      color: #fff;
+    }
+  
+    .link {
+      border-color: rgba(255, 255, 255, 0.16);
+      color: rgba(255, 255, 255, 0.92);
+    }
+  
+    .link:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.04);
+    }
+  }
+  

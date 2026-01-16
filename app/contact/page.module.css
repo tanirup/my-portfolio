@@ -1,0 +1,306 @@
+/* app/contact/page.module.css */
+
+/* ---- Page layout（Homeとトーン合わせ） ---- */
+.page {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 24px;
+  gap: 56px;
+  position: relative;
+  z-index: 0;
+
+  background:
+    radial-gradient(900px 500px at 15% 10%, rgba(0, 0, 0, 0.06), transparent 60%),
+    radial-gradient(700px 450px at 90% 0%, rgba(0, 0, 0, 0.04), transparent 60%),
+    #ffffff;
+  color: #0a0a0a;
+}
+
+/* ---- Hero ---- */
+.hero {
+  text-align: center;
+  max-width: 860px;
+}
+
+.heroTitle {
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0;
+  font-weight: 650;
+}
+
+.heroSubtitle {
+  margin: 14px 0 0;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  color: rgba(0, 0, 0, 0.68);
+}
+
+.heroLead {
+  margin: 10px 0 0;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.8;
+}
+
+/* ---- Common blocks（中央揃え & 幅統一） ---- */
+.block {
+  width: 100%;
+  max-width: 760px;          /* ← ここでSend/Quickを同じ幅に */
+  text-align: center;        /* ← ここで中央揃え */
+  padding: 28px 22px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;       /* ← ちょい高級感 */
+}
+
+.blockTitle {
+  margin: 0 0 14px;
+  font-size: 22px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.blockText {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.64);
+  line-height: 1.8;
+}
+
+/* ---- Form card（blockの中で目立つカード） ---- */
+.formCard {
+  margin-top: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  padding: 18px;
+  text-align: left; /* ← フォームは左揃えの方が入力しやすい */
+}
+
+/* ---- Form ---- */
+.formGrid {
+  display: grid;
+  gap: 12px;
+}
+
+/* PCでは2カラム。Message/フッターはフル幅 */
+@media (min-width: 720px) {
+  .formGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  /* message行をフル幅 */
+  .formRowMessage {
+    grid-column: 1 / -1;
+  }
+
+  .formFooter,
+  .formHint {
+    grid-column: 1 / -1;
+  }
+}
+
+.formRow {
+  display: grid;
+  gap: 6px;
+}
+
+.formLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.formInput,
+.formSelect,
+.formTextarea {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 12px 12px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.formInput::placeholder,
+.formTextarea::placeholder {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.formInput:focus,
+.formSelect:focus,
+.formTextarea:focus {
+  border-color: rgba(0, 0, 0, 0.45);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.10);
+  background: rgba(255, 255, 255, 0.96);
+}
+
+/* ✅ Message欄を大きく */
+.formTextarea {
+  min-height: 240px;
+  padding: 14px 14px;
+  line-height: 1.7;
+  resize: vertical;
+}
+
+@media (min-width: 720px) {
+  .formTextarea {
+    min-height: 280px;
+  }
+}
+
+/* Footer（ボタン＋ステータス） */
+.formFooter {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.formStatusArea {
+  min-height: 18px;
+}
+
+/* Button（黒ベタじゃなく HomeのCTAトーンに合わせて上品に） */
+.formButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 18px;
+  border-radius: 10px;
+
+  background: #0a0a0a;
+  color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+
+  font-weight: 650;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 180ms ease, opacity 180ms ease, box-shadow 180ms ease;
+}
+
+.formButton:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.14);
+}
+
+.formButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.formHint {
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.65;
+}
+
+.formStatusOk {
+  font-size: 13px;
+  font-weight: 650;
+  color: rgba(0, 120, 60, 0.92);
+}
+
+.formStatusNg {
+  font-size: 13px;
+  font-weight: 650;
+  color: rgba(180, 30, 30, 0.92);
+}
+
+.gotcha {
+  display: none;
+}
+
+/* ---- Quick Contact cards ---- */
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+/* 2列にしたいならON（1列にしたいなら消してOK） */
+@media (min-width: 720px) {
+  .contactList {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.contactItem {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 16px;
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.contactItem:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 0, 0, 0.32);
+}
+
+.contactLink {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.contactLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.contactValue {
+  font-size: 15px;
+  line-height: 1.45;
+  color: rgba(0, 0, 0, 0.68);
+}
+
+.contactNote {
+  margin-top: 8px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.55;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 560px) {
+  .page {
+    padding: 56px 16px;
+    gap: 44px;
+  }
+
+  .block {
+    padding: 22px 16px;
+  }
+
+  .formCard {
+    padding: 16px;
+  }
+}
