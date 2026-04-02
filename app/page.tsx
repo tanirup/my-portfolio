@@ -6,7 +6,6 @@ import Load from "./load";
 import styles from "./page.module.css";
 import TypewriterText from "./components/animation/TypewriterText";
 
-
 export default function Page() {
   const [progress, setProgress] = useState(0);
   const [loaded, setLoaded] = useState(false);
@@ -21,7 +20,7 @@ export default function Page() {
         }
         return p + 1;
       });
-    }, 60);
+    }, 40);
 
     return () => window.clearInterval(timer);
   }, []);
@@ -35,14 +34,15 @@ export default function Page() {
       {/* Hero */}
       <section className={styles.hero}>
         <h1 className={styles.heroTitle}>
-          <TypewriterText
-            text="Welcome to My Portfolio"
-            startOnView
-          />
+          <TypewriterText text="Welcome to My Portfolio" startOnView />
         </h1>
 
-        <p className={styles.heroSubtitle}>Frontend Developer / React & Next.js</p>
-        <p className={styles.heroLead}>Creating clean, user-friendly web experiences.</p>
+        <p className={styles.heroSubtitle}>
+          Frontend Developer / React & Next.js
+        </p>
+        <p className={styles.heroLead}>
+          Creating clean, user-friendly web experiences.
+        </p>
       </section>
 
       {/* About */}
@@ -51,17 +51,15 @@ export default function Page() {
           <h2 className={styles.blockTitle}>About Me</h2>
         </Link>
         <p className={styles.blockText}>
-          I am a passionate frontend developer specializing in React and Next.js.
-          I enjoy building modern web applications with a focus on usability,
-          clean design, and maintainable code.
+          I am a passionate frontend developer specializing in React and
+          Next.js. I enjoy building modern web applications with a focus on
+          usability, clean design, and maintainable code.
         </p>
       </section>
 
       {/* Skills */}
       <section className={styles.block}>
-        <Link href="/skills" className={styles.blockLink}>
-          <h2 className={styles.blockTitle}>Skills</h2>
-        </Link>
+        <h2 className={styles.blockTitle}>Skills</h2>
 
         <ul className={styles.skillList}>
           <li className={styles.skillPill}>HTML / CSS</li>
@@ -85,7 +83,9 @@ export default function Page() {
         <Link href="/works" className={styles.blockLink}>
           <h2 className={styles.blockTitle}>Works</h2>
         </Link>
-        <p className={styles.blockText}>Here are some of the projects I have worked on.</p>
+        <p className={styles.blockText}>
+          Here are some of the projects I have worked on.
+        </p>
       </section>
 
       {/* CTA */}

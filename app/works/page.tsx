@@ -23,21 +23,21 @@ export default function WorksPage() {
           <h2 className={styles.workTitle}>Portfolio Website</h2>
 
           <p className={styles.workText}>
-            自身のポートフォリオサイト。Next.js と Tailwind CSS を使用して、
-            シンプルで見やすい構成を意識しました。
+            自身のポートフォリオサイト。Next.js、CSS、TypeScript、Node.jsを主に使用して、
+            シンプルで見やすい構成を意識しました。<br />
+            Githubのリンクからソースコードをご覧いただけます
           </p>
 
           <ul className={styles.workTech}>
             <li className={styles.workTechItem}>Next.js</li>
             <li className={styles.workTechItem}>TypeScript</li>
-            <li className={styles.workTechItem}>Tailwind CSS</li>
+            <li className={styles.workTechItem}>CSS</li>
+            <li className={styles.workTechItem}>React</li>
+            <li className={styles.workTechItem}>Node.js</li>
           </ul>
 
           <div className={styles.workLinks}>
-            <a href="#" className={styles.workLink}>
-              Demo
-            </a>
-            <a href="#" className={styles.workLink}>
+            <a href="https://github.com/tanirup?tab=repositories" className={styles.workLink}>
               GitHub
             </a>
           </div>
@@ -45,24 +45,27 @@ export default function WorksPage() {
 
         {/* Work Card 2 */}
         <article className={styles.workCard}>
-          <h2 className={styles.workTitle}>Simple Web App</h2>
+          <h2 className={styles.workTitle}>Django_main-project</h2>
 
           <p className={styles.workText}>
-            React を使った簡単な Web アプリケーション。状態管理や
-            コンポーネント設計の理解を目的として制作しました。
+            MySQLとDjangoを連携した簡単なデータ管理アプリを作りました。<br />
+            MySQLのセットアップから実装まで経験しています。<br />
+            作った作品はGitHubのリンクからRepositoriesのdjango_projectをご覧ください
           </p>
 
           <ul className={styles.workTech}>
-            <li className={styles.workTechItem}>React</li>
             <li className={styles.workTechItem}>JavaScript</li>
             <li className={styles.workTechItem}>CSS</li>
+            <li className={styles.workTechItem}>python</li>
+            <li className={styles.workTechItem}>Django</li>
+            <li className={styles.workTechItem}>HTML</li>
+
+
+
           </ul>
 
           <div className={styles.workLinks}>
-            <a href="#" className={styles.workLink}>
-              Demo
-            </a>
-            <a href="#" className={styles.workLink}>
+            <a href="https://github.com/tanirup?tab=repositories" className={styles.workLink}>
               GitHub
             </a>
           </div>

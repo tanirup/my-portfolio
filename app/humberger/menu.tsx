@@ -77,14 +77,24 @@ export default function Menu() {
       >
         <div className={styles.panelHeader}>
           <p className={styles.panelTitle}>Menu</p>
-          <button type="button" className={styles.close} onClick={close} aria-label="Close menu">
+          <button
+            type="button"
+            className={styles.close}
+            onClick={close}
+            aria-label="Close menu"
+          >
             ✕
           </button>
         </div>
 
         <nav className={styles.nav}>
           {items.map((item) => (
-            <Link key={item.href} href={item.href} className={styles.link} onClick={close}>
+            <Link
+              key={item.href}
+              href={item.href}
+              className={styles.link}
+              onClick={close}
+            >
               {item.label}
             </Link>
           ))}

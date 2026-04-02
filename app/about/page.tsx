@@ -22,7 +22,7 @@ export default function AboutPage() {
       <section className={styles.block}>
         <h2 className={styles.blockTitle}>Profile</h2>
         <p className={styles.blockText}>
-          Webエンジニアを目指して学習中です。
+          エンジニアを目指して学習中です。
           フロントエンドを中心に、React / Next.js を使った
           Webアプリケーション開発に取り組んでいます。
           バックエンドについても基礎的な知識があり、

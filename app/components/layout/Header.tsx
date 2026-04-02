@@ -24,11 +24,11 @@ export default function Header() {
 
         {/* ✅ PC用リンク */}
         <nav className={styles.nav} aria-label="Primary navigation">
+        <Link href="/" className={styles.link}>
+            Home
+          </Link>
           <Link href="/about" className={styles.link}>
             About
-          </Link>
-          <Link href="/skills" className={styles.link}>
-            Skills
           </Link>
           <Link href="/works" className={styles.link}>
             Works
