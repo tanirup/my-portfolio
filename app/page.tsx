@@ -6,29 +6,36 @@ import Load from "./load";
 import styles from "./page.module.css";
 import TypewriterText from "./components/animation/TypewriterText";
 
+function hasHomeLoaded() {
+  if (typeof window === "undefined") return false;
+  return sessionStorage.getItem("home-loaded") === "true";
+}
+
 export default function Page() {
-  const [progress, setProgress] = useState(0);
-  const [loaded, setLoaded] = useState(false);
+  const [progress, setProgress] = useState(() => (hasHomeLoaded() ? 100 : 0));
+  const [loaded, setLoaded] = useState(() => hasHomeLoaded());
 
   useEffect(() => {
+    if (loaded) return;
+
     const timer = window.setInterval(() => {
       setProgress((p) => {
         if (p >= 100) {
           window.clearInterval(timer);
+          sessionStorage.setItem("home-loaded", "true");
           setLoaded(true);
           return 100;
         }
+
         return p + 1;
       });
     }, 40);
 
     return () => window.clearInterval(timer);
-  }, []);
+  }, [loaded]);
 
-  // ロード中は Load コンポーネントだけ表示
   if (!loaded) return <Load progress={progress} />;
 
-  // ロード完了後にメイン画面を表示
   return (
     <main className={styles.page}>
       {/* Hero */}
@@ -40,6 +47,7 @@ export default function Page() {
         <p className={styles.heroSubtitle}>
           Frontend Developer / React & Next.js
         </p>
+
         <p className={styles.heroLead}>
           Creating clean, user-friendly web experiences.
         </p>
@@ -50,6 +58,7 @@ export default function Page() {
         <Link href="/about" className={styles.blockLink}>
           <h2 className={styles.blockTitle}>About Me</h2>
         </Link>
+
         <p className={styles.blockText}>
           I am a passionate frontend developer specializing in React and
           Next.js. I enjoy building modern web applications with a focus on
@@ -83,6 +92,7 @@ export default function Page() {
         <Link href="/works" className={styles.blockLink}>
           <h2 className={styles.blockTitle}>Works</h2>
         </Link>
+
         <p className={styles.blockText}>
           Here are some of the projects I have worked on.
         </p>
@@ -93,6 +103,7 @@ export default function Page() {
         <Link href="/contact" className={styles.blockLink}>
           <h2 className={styles.blockTitle}>Get In Touch</h2>
         </Link>
+
         <p className={styles.blockText}>
           Feel free to contact me if you are interested in working together.
         </p>

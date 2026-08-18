@@ -1,6 +1,9 @@
 /* app/page.module.css */
 
-/* ---- Page layout ---- */
+/* =========================
+   Page layout
+========================= */
+
 .page {
   min-height: 100svh;
   display: flex;
@@ -19,7 +22,11 @@
   color: #0a0a0a;
 }
 
-/* ---- Hero ---- */
+
+/* =========================
+   Hero
+========================= */
+
 .hero {
   text-align: center;
   max-width: 860px;
@@ -41,17 +48,22 @@
 }
 
 .heroLead {
-  margin: 0;
+  margin: 14px 0 0;
   font-size: 16px;
+  line-height: 1.8;
   color: rgba(0, 0, 0, 0.55);
 }
 
-/* ---- Common blocks ---- */
+
+/* =========================
+   Common blocks
+========================= */
+
 .block {
   width: 100%;
   max-width: 760px;
   text-align: center;
-  padding: 13px 22px;
+  padding: 24px 22px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(8px);
@@ -71,34 +83,11 @@
   line-height: 1.8;
 }
 
-/* blockText を ul に使う場合の見た目を安定させる */
-ul.blockText {
-  list-style: disc;
-  padding-left: 18px;
-  margin: 12px auto 0;
-  text-align: left;
-  max-width: 640px;
-}
 
-ul.blockText li {
-  margin: 6px 0;
-}
+/* =========================
+   Links
+========================= */
 
-/* ---- Nested block (inner card) cleanup ---- */
-/* StatusSection(.block) の中に BookDetail(.block) を入れる時に二重枠になるのを完全に潰す */
-.blockNoBorder {
-  border: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  backdrop-filter: none !important;
-
-  /* 内側の四角感の原因になる余白も消す */
-  padding: 0 !important;
-  margin-top: 14px;
-  border-radius: 0 !important;
-}
-
-/* ---- link styling for section titles ---- */
 .blockLink {
   display: inline-block;
   color: inherit;
@@ -124,7 +113,11 @@ ul.blockText li {
   transform-origin: left;
 }
 
-/* ---- Skills pills ---- */
+
+/* =========================
+   Skills
+========================= */
+
 .skillList {
   list-style: none;
   padding: 0;
@@ -143,7 +136,10 @@ ul.blockText li {
   letter-spacing: 0.01em;
   color: rgba(0, 0, 0, 0.72);
   background: rgba(255, 255, 255, 0.9);
-  transition: transform 150ms ease, border-color 150ms ease, background 150ms ease;
+  transition:
+    transform 150ms ease,
+    border-color 150ms ease,
+    background 150ms ease;
 }
 
 .skillPill:hover {
@@ -152,7 +148,11 @@ ul.blockText li {
   background: rgba(255, 255, 255, 1);
 }
 
-/* ---- CTA ---- */
+
+/* =========================
+   CTA
+========================= */
+
 .cta {
   width: 100%;
   max-width: 760px;
@@ -180,7 +180,9 @@ ul.blockText li {
   border: 1px solid rgba(255, 255, 255, 0.55);
   text-decoration: none;
   font-weight: 650;
-  transition: transform 180ms ease, opacity 180ms ease;
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
 }
 
 .ctaButton:hover {
@@ -188,113 +190,11 @@ ul.blockText li {
   opacity: 0.92;
 }
 
-/* ---- Responsive ---- */
-@media (max-width: 560px) {
-  .page {
-    padding: 56px 16px;
-    gap: 44px;
-  }
 
-  .block,
-  .cta {
-    padding: 22px 16px;
-  }
-}
+/* =========================
+   Back button
+========================= */
 
-/* ---- Works ---- */
-.workGrid {
-  width: 100%;
-  max-width: 980px;
-  display: grid;
-  gap: 16px;
-}
-
-@media (min-width: 768px) {
-  .workGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-  }
-}
-
-.workCard {
-  border-radius: 12px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(8px);
-  padding: 20px;
-  transition: transform 180ms ease, border-color 180ms ease;
-}
-
-.workCard:hover {
-  transform: translateY(-2px);
-  border-color: rgba(0, 0, 0, 0.32);
-}
-
-.workTitle {
-  margin: 0 0 10px;
-  font-size: 18px;
-  font-weight: 650;
-  letter-spacing: -0.01em;
-}
-
-.workText {
-  margin: 0 0 14px;
-  color: rgba(0, 0, 0, 0.64);
-  line-height: 1.8;
-}
-
-.workTech {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 14px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.workTechItem {
-  border: 1px solid rgba(0, 0, 0, 0.14);
-  border-radius: 999px;
-  padding: 6px 10px;
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.7);
-  background: rgba(255, 255, 255, 0.9);
-}
-
-.workLinks {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-}
-
-.workLink {
-  position: relative;
-  display: inline-block;
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.82);
-  text-decoration: none;
-  padding-bottom: 2px;
-}
-
-.workLink::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 1px;
-  background: rgba(0, 0, 0, 0.8);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 180ms ease;
-}
-
-.workLink:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
-/* Back button area */
 .back {
   text-align: center;
 }
@@ -309,7 +209,10 @@ ul.blockText li {
   color: rgba(0, 0, 0, 0.9);
   background: rgba(255, 255, 255, 0.85);
   text-decoration: none;
-  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+  transition:
+    transform 180ms ease,
+    background 180ms ease,
+    color 180ms ease;
 }
 
 .backButton:hover {
@@ -318,36 +221,19 @@ ul.blockText li {
   color: #ffffff;
 }
 
-/* ---- Status pills (optional) ---- */
-.statusPill {
-  display: inline-block;
-  padding: 6px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  margin-bottom: 8px;
-}
 
-.statusCompleted {
-  background: rgba(34, 197, 94, 0.15);
-}
+/* =========================
+   Responsive
+========================= */
 
-.statusInProgress {
-  background: rgba(234, 179, 8, 0.18);
-}
+@media (max-width: 560px) {
+  .page {
+    padding: 56px 16px;
+    gap: 44px;
+  }
 
-.studyLogImage {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 14px;
-  margin-bottom: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-@media (max-width: 768px) {
-  .studyLogImage {
-    height: 160px;
+  .block,
+  .cta {
+    padding: 22px 16px;
   }
 }
