@@ -52,6 +52,19 @@ export default function AboutPage() {
           <li className={styles.skillPill}>Linux</li>
         </ul>
       </section>
+      {/* My Hobbies */}
+      <section className={styles.block}>
+        <h2 className={styles.blockTitle}>My Hobbies</h2>
+
+        <p className={styles.blockText}>
+          趣味は、ゲーム、読書、ものづくりです。
+          特に、自分のアイデアを形にする制作活動が好きで、さまざまな分野に挑戦してきました。
+          IllustratorやPhotoshopを使ったデザイン制作、フリー素材やAPIを活用したWebサイト制作、
+          DartとFlutterを使ったスマートフォンアプリ開発などを経験しています。
+          また、MySQL、Firebase、Djangoを使用したデータ管理やWebアプリケーション開発にも取り組みました。
+          最近はBlenderを使い、3Dモデリングやアニメーション制作にも挑戦しています。
+       </p>
+      </section>
 
       {/* Experience */}
       <section className={styles.block}>
@@ -62,6 +75,7 @@ export default function AboutPage() {
           UI設計から実装まで一貫して取り組み、
           GitHub を用いたソースコード管理や
           開発環境の構築も一通り経験しています。
+          AIを使った開発もしたいと考えていますが、個人ではAPIはお金がかかるので企業に入って経験を積んでから個人でやろうと考えています。
         </p>
       </section>
 
