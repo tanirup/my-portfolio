@@ -1,179 +1,326 @@
 /* app/humberger/menu.module.css */
 
+/* =========================
+   Root
+========================= */
+
 .root {
-    position: relative;
-  }
-  
-  /* --- Trigger button (☰) --- */
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+
+/* =========================
+   Trigger button
+========================= */
+
+.trigger {
+  width: 42px;
+  height: 42px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+
+  background: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.trigger:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0, 0, 0, 0.32);
+  background: rgba(255, 255, 255, 1);
+}
+
+.trigger:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.5);
+  outline-offset: 3px;
+}
+
+
+/* =========================
+   Hamburger icon
+========================= */
+
+.icon {
+  width: 18px;
+  height: 14px;
+
+  position: relative;
+
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.bar {
+  display: block;
+
+  width: 100%;
+  height: 2px;
+
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.9);
+
+  transition:
+    transform 200ms ease,
+    opacity 200ms ease;
+}
+
+.barTopOpen {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.barMidOpen {
+  opacity: 0;
+}
+
+.barBotOpen {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+
+/* =========================
+   Overlay
+========================= */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9998;
+
+  background: rgba(0, 0, 0, 0.35);
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 200ms ease;
+}
+
+.overlayOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+/* =========================
+   Panel
+========================= */
+
+.panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  z-index: 9999;
+
+  width: min(320px, 88vw);
+  height: 100svh;
+
+  padding: 18px 16px;
+
+  background: #ffffff;
+  border-left: 1px solid rgba(0, 0, 0, 0.12);
+
+  transform: translateX(110%);
+  transition: transform 220ms ease;
+
+  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.14);
+}
+
+.panelOpen {
+  transform: translateX(0);
+}
+
+.panelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 14px;
+}
+
+.panelTitle {
+  margin: 0;
+
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.close {
+  width: 38px;
+  height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+
+  background: rgba(255, 255, 255, 0.85);
+  color: #0a0a0a;
+
+  cursor: pointer;
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.close:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0, 0, 0, 0.32);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.close:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.5);
+  outline-offset: 3px;
+}
+
+
+/* =========================
+   Navigation links
+========================= */
+
+.nav {
+  display: grid;
+  gap: 10px;
+
+  margin-top: 10px;
+}
+
+.link {
+  padding: 12px 12px;
+
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.9);
+
+  font-size: 14px;
+  font-weight: 550;
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
+}
+
+.link:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.link:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.5);
+  outline-offset: 3px;
+}
+
+.hint {
+  margin: 16px 0 0;
+
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 560px) {
   .trigger {
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.14);
-    background: rgba(255, 255, 255, 0.85);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: transform 180ms ease, border-color 180ms ease;
+    width: 40px;
+    height: 40px;
   }
-  
-  .trigger:hover {
-    transform: translateY(-1px);
-    border-color: rgba(0, 0, 0, 0.32);
-  }
-  
-  .icon {
-    width: 18px;
-    height: 14px;
-    position: relative;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .bar {
-    display: block;
-    height: 2px;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    border-radius: 2px;
-    transition: transform 200ms ease, opacity 200ms ease;
-  }
-  
-  /* X animation */
-  .barTopOpen {
-    transform: translateY(6px) rotate(45deg);
-  }
-  .barMidOpen {
-    opacity: 0;
-  }
-  .barBotOpen {
-    transform: translateY(-6px) rotate(-45deg);
-  }
-  
-  /* --- Overlay --- */
-  .overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.35);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 200ms ease;
-    z-index: 9998;
-  }
-  
-  .overlayOpen {
-    opacity: 1;
-    pointer-events: auto;
-  }
-  
-  /* --- Panel --- */
+
   .panel {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100svh;
-    width: min(320px, 88vw);
-    background: #ffffff;
-    border-left: 1px solid rgba(0, 0, 0, 0.12);
-    transform: translateX(110%);
-    transition: transform 220ms ease;
-    z-index: 9999;
-    padding: 18px 16px;
+    width: min(300px, 88vw);
+    padding: 16px;
   }
-  
-  .panelOpen {
-    transform: translateX(0);
-  }
-  
-  .panelHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 14px;
-  }
-  
-  .panelTitle {
-    margin: 0;
-    font-size: 12px;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: rgba(0, 0, 0, 0.6);
-  }
-  
-  .close {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.14);
-    background: rgba(255, 255, 255, 0.85);
-    cursor: pointer;
-  }
-  
-  /* --- Links --- */
-  .nav {
-    display: grid;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
+
   .link {
-    padding: 12px 12px;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    text-decoration: none;
-    color: rgba(0, 0, 0, 0.9);
-    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    padding: 11px 12px;
   }
-  
-  .link:hover {
-    transform: translateY(-1px);
-    border-color: rgba(0, 0, 0, 0.3);
-    background: rgba(0, 0, 0, 0.03);
+}
+
+
+/* =========================
+   Dark mode
+========================= */
+
+@media (prefers-color-scheme: dark) {
+  .trigger {
+    background: rgba(10, 10, 10, 0.85);
+    border-color: rgba(255, 255, 255, 0.16);
   }
-  
+
+  .trigger:hover {
+    border-color: rgba(255, 255, 255, 0.32);
+    background: rgba(20, 20, 20, 1);
+  }
+
+  .trigger:focus-visible,
+  .close:focus-visible,
+  .link:focus-visible {
+    outline-color: rgba(255, 255, 255, 0.7);
+  }
+
+  .bar {
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .overlay {
+    background: rgba(0, 0, 0, 0.55);
+  }
+
+  .panel {
+    background: #0a0a0a;
+    border-left-color: rgba(255, 255, 255, 0.16);
+    box-shadow: -20px 0 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .panelTitle,
   .hint {
-    margin-top: 16px;
-    font-size: 12px;
-    color: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.6);
   }
-  
-  /* --- Dark mode --- */
-  @media (prefers-color-scheme: dark) {
-    .trigger {
-      background: rgba(10, 10, 10, 0.85);
-      border-color: rgba(255, 255, 255, 0.16);
-    }
-  
-    .bar {
-      background: rgba(255, 255, 255, 0.92);
-    }
-  
-    .panel {
-      background: #0a0a0a;
-      border-left-color: rgba(255, 255, 255, 0.16);
-    }
-  
-    .panelTitle,
-    .hint {
-      color: rgba(255, 255, 255, 0.6);
-    }
-  
-    .close {
-      background: rgba(10, 10, 10, 0.85);
-      border-color: rgba(255, 255, 255, 0.16);
-      color: #fff;
-    }
-  
-    .link {
-      border-color: rgba(255, 255, 255, 0.16);
-      color: rgba(255, 255, 255, 0.92);
-    }
-  
-    .link:hover {
-      border-color: rgba(255, 255, 255, 0.3);
-      background: rgba(255, 255, 255, 0.04);
-    }
+
+  .close {
+    background: rgba(10, 10, 10, 0.85);
+    border-color: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
   }
-  
+
+  .close:hover {
+    border-color: rgba(255, 255, 255, 0.32);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .link {
+    border-color: rgba(255, 255, 255, 0.16);
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .link:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.04);
+  }
+}

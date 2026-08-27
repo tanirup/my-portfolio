@@ -4,7 +4,6 @@ import styles from "./layout.module.css";
 import "./globals.css";
 
 import Header from "@/app/components/layout/Header";
-import Menu from "./humberger/menu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,25 +22,21 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
+  const year = new Date().getFullYear();
+
   return (
     <html lang="ja">
       <body className={`${geistSans.variable} ${geistMono.variable} ${styles.body}`}>
-        {/* ✅ 固定ヘッダー（components/layout/Header.tsx） */}
         <Header />
 
-        {/* ✅ ハンバーガーメニューをヘッダーの外に出す場合 */}
-        <Menu />
-
-        {/* Main */}
         <main className={styles.main}>{children}</main>
 
-        {/* Footer */}
         <footer className={styles.footer}>
           <p className={styles.footerText}>
-            © {new Date().getFullYear()} Yuki. All rights reserved.
+            © {year} Yuki. All rights reserved.
           </p>
         </footer>
       </body>

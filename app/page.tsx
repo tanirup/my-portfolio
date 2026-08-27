@@ -6,33 +6,48 @@ import Load from "./load";
 import styles from "./page.module.css";
 import TypewriterText from "./components/animation/TypewriterText";
 
-function hasHomeLoaded() {
-  if (typeof window === "undefined") return false;
-  return sessionStorage.getItem("home-loaded") === "true";
-}
-
 export default function Page() {
-  const [progress, setProgress] = useState(() => (hasHomeLoaded() ? 100 : 0));
-  const [loaded, setLoaded] = useState(() => hasHomeLoaded());
+  const [progress, setProgress] = useState(0);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    if (loaded) return;
+    let intervalId: number | undefined;
 
-    const timer = window.setInterval(() => {
-      setProgress((p) => {
-        if (p >= 100) {
-          window.clearInterval(timer);
-          sessionStorage.setItem("home-loaded", "true");
-          setLoaded(true);
-          return 100;
-        }
+    const timeoutId = window.setTimeout(() => {
+      const hasLoaded = sessionStorage.getItem("home-loaded") === "true";
 
-        return p + 1;
-      });
-    }, 40);
+      if (hasLoaded) {
+        setProgress(100);
+        setLoaded(true);
+        return;
+      }
 
-    return () => window.clearInterval(timer);
-  }, [loaded]);
+      intervalId = window.setInterval(() => {
+        setProgress((currentProgress) => {
+          if (currentProgress >= 100) {
+            if (intervalId) {
+              window.clearInterval(intervalId);
+            }
+
+            sessionStorage.setItem("home-loaded", "true");
+            setLoaded(true);
+
+            return 100;
+          }
+
+          return currentProgress + 1;
+        });
+      }, 40);
+    }, 0);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+
+      if (intervalId) {
+        window.clearInterval(intervalId);
+      }
+    };
+  }, []);
 
   if (!loaded) return <Load progress={progress} />;
 

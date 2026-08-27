@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./menu.module.css";
 
@@ -12,36 +12,47 @@ type MenuItem = {
 const items: MenuItem[] = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/hobby", label: "Hobby"},
+  { href: "/hobby", label: "Hobby" },
   { href: "/works", label: "Works" },
+  { href: "/study-log", label: "Study Log" },
   { href: "/contact", label: "Contact" },
 ];
 
 export default function Menu() {
   const [open, setOpen] = useState(false);
-  const panelRef = useRef<HTMLDivElement | null>(null);
 
-  // ESCで閉じる
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        setOpen(false);
+      }
     };
+
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    };
   }, []);
 
-  // メニューオープン時：スクロール固定（必要なら）
   useEffect(() => {
     if (!open) return;
-    const original = document.body.style.overflow;
+
+    const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+
     return () => {
-      document.body.style.overflow = original;
+      document.body.style.overflow = originalOverflow;
     };
   }, [open]);
 
-  const close = () => setOpen(false);
-  const toggle = () => setOpen((v) => !v);
+  const close = () => {
+    setOpen(false);
+  };
+
+  const toggle = () => {
+    setOpen((current) => !current);
+  };
 
   return (
     <div className={styles.root}>
@@ -49,7 +60,7 @@ export default function Menu() {
         type="button"
         className={styles.trigger}
         onClick={toggle}
-        aria-label="Open menu"
+        aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
         aria-controls="hamburger-panel"
       >
@@ -60,17 +71,14 @@ export default function Menu() {
         </span>
       </button>
 
-      {/* Overlay */}
       <div
         className={`${styles.overlay} ${open ? styles.overlayOpen : ""}`}
         onClick={close}
-        aria-hidden={!open}
+        aria-hidden="true"
       />
 
-      {/* Panel */}
       <div
         id="hamburger-panel"
-        ref={panelRef}
         className={`${styles.panel} ${open ? styles.panelOpen : ""}`}
         role="dialog"
         aria-modal="true"
@@ -78,6 +86,7 @@ export default function Menu() {
       >
         <div className={styles.panelHeader}>
           <p className={styles.panelTitle}>Menu</p>
+
           <button
             type="button"
             className={styles.close}
@@ -88,7 +97,7 @@ export default function Menu() {
           </button>
         </div>
 
-        <nav className={styles.nav}>
+        <nav className={styles.nav} aria-label="Mobile navigation">
           {items.map((item) => (
             <Link
               key={item.href}
