@@ -7,6 +7,7 @@ Windows用のx64版Node.jsをインストールする。
 https://nodejs.org/ja/download　<br> 
 node.js公式リンク
 ### 2. PATHを設定
+インストールが終わったらインストールするときに設定したpathを環境変数のところに追加する。
 windowsキーを押して検索のところに環境変数と入力する <br>
 設定画面に行ったら、ユーザー環境変数のところの編集をクリックして <br>
 以下のようなpathを追加してOKをおす。<br>
