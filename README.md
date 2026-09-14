@@ -1,23 +1,30 @@
 ## 実行方法
+## 実行方法
+
 ## Windowsでnpmを使う手順
 
 ### 1. Node.jsをインストール
 
 Windows用のx64版Node.jsをインストールする。
-https://nodejs.org/ja/download　<br> 
-node.js公式リンク
+
+Node.js公式サイト
+https://nodejs.org/ja/download
+
 ### 2. PATHを設定
-インストールが終わったらインストールするときに設定したpathを環境変数のところに追加する。
-windowsキーを押して検索のところに環境変数と入力する <br>
-設定画面に行ったら、ユーザー環境変数のところの編集をクリックして <br>
-以下のようなpathを追加してOKをおす。<br>
-環境変数 `Path` に以下を追加する。
+
+Node.jsのインストール後、Windowsキーを押して「環境変数」と検索する。
+
+「環境変数」を開き、ユーザー環境変数の `Path` を編集して以下を追加する。
 
 ```text
 C:\Program Files\nodejs\
 ```
 
+追加したら「OK」を押して、PowerShellを開き直す。
+
 ### 3. PowerShellの実行制限を変更
+
+npm実行時にスクリプト実行エラーが出た場合は、PowerShellで以下を実行する。
 
 ```powershell
 Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
@@ -30,35 +37,67 @@ node -v
 npm -v
 ```
 
+両方のバージョンが表示されればOK。
+
 ### 5. プロジェクトを起動
-```bash
+
+まず現在のフォルダを確認する。
+
+```powershell
 dir
 ```
-でappやpublicのファイルが見えたらOK <br>
-my-portfolio-mainとpackage-lock.json 
-だけだったら・・・・my-portfolio-main/my-portfolio-mainという可能性もあるので確かめて下さい。 <br>
-```bash
+
+`package.json`、`app`、`public` などが表示されればOK。
+
+もし、
+
+```text
+my-portfolio-main
+package-lock.json
+```
+
+などしか表示されない場合は、さらにプロジェクトフォルダの中に入る。
+
+```powershell
 cd my-portfolio-main
 ```
-で移動してappやpublicファイルがあるかチェックする <br>
-`package.json` があるフォルダで実行する。
+
+もう一度確認する。
+
+```powershell
+dir
+```
+
+`package.json` があるフォルダで以下を実行する。
 
 ```powershell
 npm install
 npm run dev
 ```
 
-ブラウザで以下を開く。
+起動後、ブラウザで以下を開く。
 
 ```text
 http://localhost:3000
 ```
 
-## MAC実行方法
+## Mac実行方法
+
+`package.json` があるプロジェクトフォルダで以下を実行する。
+
 ```bash
 npm install
 npm run dev
 ```
+
+起動後、
+
+```text
+http://localhost:3000
+```
+
+をブラウザで開く。
+
 
 # Yuki Portfolio
 
