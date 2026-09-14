@@ -31,15 +31,15 @@ npm -v
 ```
 
 ### 5. プロジェクトを起動
-'''bash
+```bash
 dir
-''' 
+```
 でappやpublicのファイルが見えたらOK <br>
 my-portfolio-mainとpackage-lock.json 
 だけだったら・・・・ <br>
-'''bash
+```bash
 cd my-portfolio-main
-'''
+```
 で移動してappやpublicファイルがあるかチェックする <br>
 `package.json` があるフォルダで実行する。
 
