@@ -1,3 +1,9 @@
+# 実行方法
+
+/*
+npm run dev
+*/
+
 # Yuki Portfolio
 
 Next.js / TypeScript を使用して制作したポートフォリオサイトです。  
