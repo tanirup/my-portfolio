@@ -1,116 +1,281 @@
+/* app/study-log/page.module.css */
+
+.sectionHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.count {
+  flex-shrink: 0;
+
+  margin: 0;
+  padding: 7px 12px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+
+  background: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.58);
+
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+}
+
 .studyGrid {
-    width: 100%;
-    max-width: 980px;
-    margin-top: 24px;
-  
-    display: grid;
-    gap: 16px;
+  width: 100%;
+  max-width: 980px;
+  margin-top: 24px;
+
+  display: grid;
+  gap: 16px;
+}
+
+.studyCard {
+  overflow: hidden;
+  text-align: left;
+
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(8px);
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.studyCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 0, 0, 0.28);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.08);
+}
+
+.studyImage {
+  width: 100%;
+  height: 210px;
+
+  display: block;
+  object-fit: cover;
+  object-position: center;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.04);
+
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+
+.studyCard:hover .studyImage {
+  transform: scale(1.02);
+  filter: brightness(0.98);
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 210px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.08)),
+    #f5f5f5;
+
+  color: rgba(0, 0, 0, 0.42);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+.studyContent {
+  padding: 20px;
+}
+
+.studyCategory {
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+
+  margin: 0 0 12px;
+  padding: 5px 10px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+
+  background: rgba(0, 0, 0, 0.04);
+  color: rgba(0, 0, 0, 0.62);
+
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.03em;
+}
+
+.studyTitle {
+  margin: 0 0 10px;
+
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.studyText {
+  margin: 0 0 16px;
+
+  color: rgba(0, 0, 0, 0.64);
+  line-height: 1.8;
+  font-size: 14px;
+}
+
+.studyTags {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.studyTag {
+  padding: 6px 10px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+
+  background: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.68);
+
+  font-size: 12px;
+  line-height: 1;
+}
+
+.emptyText {
+  margin: 24px 0 0;
+
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.8;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (min-width: 768px) {
+  .studyGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
   }
-  
-  .studyCard {
-    text-align: left;
-  
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(8px);
-  
-    padding: 20px;
-    transition: transform 180ms ease, border-color 180ms ease;
+}
+
+@media (max-width: 768px) {
+  .sectionHeader {
+    flex-direction: column;
+    gap: 14px;
   }
-  
-  .studyCard:hover {
-    transform: translateY(-2px);
-    border-color: rgba(0, 0, 0, 0.32);
+
+  .count {
+    align-self: center;
   }
-  
-  .studyImage {
-    width: 100%;
-    height: 200px;
-  
-    display: block;
-    object-fit: cover;
-    object-position: center;
-  
-    border-radius: 14px;
-    margin-bottom: 16px;
-  
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    background: rgba(0, 0, 0, 0.04);
-  
-    transition: transform 0.25s ease, filter 0.25s ease;
+
+  .studyImage,
+  .imagePlaceholder {
+    height: 170px;
   }
-  
-  .studyCard:hover .studyImage {
-    transform: scale(1.015);
-    filter: brightness(0.98);
+}
+
+@media (max-width: 480px) {
+  .studyImage,
+  .imagePlaceholder {
+    height: 150px;
   }
-  
+
+  .studyContent {
+    padding: 16px;
+  }
+
   .studyTitle {
-    margin: 0 0 10px;
-  
-    font-size: 18px;
-    font-weight: 650;
-    letter-spacing: -0.01em;
+    font-size: 17px;
   }
-  
-  .studyCategory {
-    margin: 0 0 10px;
-  
-    font-size: 13px;
-    font-weight: 600;
-    color: rgba(0, 0, 0, 0.58);
-  }
-  
+
   .studyText {
-    margin: 0 0 14px;
-  
-    color: rgba(0, 0, 0, 0.64);
-    line-height: 1.8;
+    font-size: 13px;
   }
-  
-  .studyTags {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+}
+
+
+/* =========================
+   Dark mode
+========================= */
+
+@media (prefers-color-scheme: dark) {
+  .count {
+    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.58);
   }
-  
+
+  .studyCard {
+    border-color: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .studyCard:hover {
+    border-color: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.35);
+  }
+
+  .studyImage {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  .imagePlaceholder {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+
+    background:
+      linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.1)),
+      #111111;
+
+    color: rgba(255, 255, 255, 0.42);
+  }
+
+  .studyCategory {
+    border-color: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.68);
+  }
+
+  .studyTitle {
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .studyText {
+    color: rgba(255, 255, 255, 0.64);
+  }
+
   .studyTag {
-    border: 1px solid rgba(0, 0, 0, 0.14);
-    border-radius: 999px;
-  
-    padding: 6px 10px;
-  
-    font-size: 12px;
-    color: rgba(0, 0, 0, 0.7);
-  
-    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.72);
   }
-  
-  @media (min-width: 768px) {
-    .studyGrid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
+
+  .emptyText {
+    color: rgba(255, 255, 255, 0.55);
   }
-  
-  @media (max-width: 768px) {
-    .studyImage {
-      height: 165px;
-      border-radius: 12px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .studyImage {
-      height: 145px;
-    }
-  
-    .studyCard {
-      padding: 16px;
-    }
-  }
+}

@@ -1,113 +1,424 @@
+/* app/hobby/page.module.css */
+
+/* =========================
+   Game cards
+========================= */
+
+.gameFeature {
+  margin-top: 28px;
+}
+
+.gameFeatureHeader {
+  max-width: 680px;
+  margin: 0 auto 22px;
+  text-align: center;
+}
+
+.gameFeatureLabel {
+  margin: 0 0 8px;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: rgba(0, 0, 0, 0.48);
+}
+
+.gameFeatureTitle {
+  margin: 0 0 10px;
+
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.gameFeatureText {
+  margin: 0;
+
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.gameGrid {
+  display: grid;
+  gap: 16px;
+}
+
+.gameCard {
+  overflow: hidden;
+  text-align: left;
+
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(8px);
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.gameCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 0, 0, 0.28);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+}
+
+.gameImageWrap {
+  width: 100%;
+  height: 260px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px;
+
+  background:
+    radial-gradient(circle at center, rgba(0, 0, 0, 0.06), transparent 62%),
+    rgba(0, 0, 0, 0.035);
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.gameImage {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+  object-position: center;
+
+  border-radius: 10px;
+}
+
+.gameContent {
+  padding: 16px;
+}
+
+.gameTag {
+  display: inline-flex;
+
+  margin: 0 0 10px;
+  padding: 5px 10px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+
+  background: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.58);
+
+  font-size: 11px;
+  font-weight: 650;
+  letter-spacing: 0.03em;
+}
+
+.gameTitle {
+  margin: 0 0 8px;
+
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.gameText {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.75;
+  color: rgba(0, 0, 0, 0.62);
+}
+
+/* =========================
+   Book gallery
+========================= */
+
 .bookGallery {
-    margin-top: 24px;
-    display: grid;
-    gap: 16px;
+  margin-top: 24px;
+
+  display: grid;
+  gap: 16px;
+}
+
+.bookCard {
+  text-align: left;
+
+  padding: 14px;
+
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(8px);
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.bookCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 0, 0, 0.28);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+}
+
+.bookImage {
+  width: 100%;
+  height: 220px;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 12px;
+  margin-bottom: 12px;
+
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.bookCaption {
+  margin: 0;
+
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.64);
+}
+
+/* =========================
+   Reading image modal
+========================= */
+
+.bookImageButton {
+  width: 100%;
+  padding: 0;
+
+  display: block;
+
+  border: none;
+  background: transparent;
+
+  cursor: zoom-in;
+}
+
+.bookImageButton:focus-visible {
+  outline: 2px solid rgba(0, 0, 0, 0.5);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.imageModal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.imageModalContent {
+  position: relative;
+
+  width: min(920px, 94vw);
+  max-height: 90svh;
+
+  padding: 18px;
+  overflow: auto;
+
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+.imageModalClose {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 1;
+
+  width: 38px;
+  height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.14);
+
+  background: rgba(255, 255, 255, 0.92);
+  color: #0a0a0a;
+
+  cursor: pointer;
+}
+
+.imageModalImage {
+  width: 100%;
+  height: auto;
+
+  display: block;
+
+  border-radius: 14px;
+  object-fit: contain;
+}
+
+.imageModalCaption {
+  margin: 14px 0 0;
+
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(0, 0, 0, 0.64);
+}
+
+/* =========================
+   Inspiration
+========================= */
+
+.inspirationGrid {
+  margin-top: 22px;
+
+  display: grid;
+  gap: 16px;
+}
+
+.inspirationCard {
+  text-align: left;
+
+  padding: 20px;
+
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(8px);
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease;
+}
+
+.inspirationCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 0, 0, 0.28);
+}
+
+.inspirationLabel {
+  margin: 0 0 8px;
+
+  font-size: 12px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  color: rgba(0, 0, 0, 0.48);
+}
+
+.inspirationName {
+  margin: 0 0 12px;
+
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+
+  color: #0a0a0a;
+}
+
+.inspirationText {
+  margin: 0;
+
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.64);
+}
+
+.inspirationText + .inspirationText {
+  margin-top: 10px;
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (min-width: 768px) {
+  .gameGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  
-  .bookCard {
-    text-align: left;
+
+  .bookGallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .gameImageWrap {
+    height: 230px;
     padding: 14px;
-    border-radius: 14px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.78);
-    backdrop-filter: blur(8px);
-    transition: transform 180ms ease, border-color 180ms ease;
   }
-  
-  .bookCard:hover {
-    transform: translateY(-2px);
-    border-color: rgba(0, 0, 0, 0.28);
-  }
-  
+
   .bookImage {
-    width: 100%;
-    height: 180px;
-    display: block;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    height: 165px;
   }
-  
-  .bookCaption {
-    margin: 0;
-    font-size: 13px;
-    line-height: 1.7;
-    color: rgba(0, 0, 0, 0.64);
+}
+
+@media (max-width: 560px) {
+  .gameImageWrap {
+    height: 220px;
+    padding: 12px;
   }
-  
-  .inspirationGrid {
-    margin-top: 22px;
-    display: grid;
-    gap: 16px;
+
+  .gameContent {
+    padding: 14px;
   }
-  
+
+  .bookCard,
   .inspirationCard {
-    text-align: left;
-    padding: 20px;
-    border-radius: 14px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    background: rgba(255, 255, 255, 0.78);
-    backdrop-filter: blur(8px);
-    transition: transform 180ms ease, border-color 180ms ease;
+    padding: 16px;
   }
-  
-  .inspirationCard:hover {
-    transform: translateY(-2px);
-    border-color: rgba(0, 0, 0, 0.28);
+
+  .bookImage {
+    height: 150px;
   }
-  
-  .inspirationLabel {
-    margin: 0 0 8px;
-    font-size: 12px;
-    font-weight: 650;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: rgba(0, 0, 0, 0.48);
+
+  .gameFeatureTitle {
+    font-size: 18px;
   }
-  
+
+  .gameTitle {
+    font-size: 15px;
+  }
+
   .inspirationName {
-    margin: 0 0 12px;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: #0a0a0a;
+    font-size: 18px;
+  }
+
+  .imageModal {
+    padding: 14px;
   }
   
-  .inspirationText {
-    margin: 0;
-    color: rgba(0, 0, 0, 0.64);
-    line-height: 1.8;
+  .imageModalContent {
+    padding: 12px;
+    border-radius: 14px;
   }
   
-  .inspirationText + .inspirationText {
-    margin-top: 10px;
+  .imageModalClose {
+    top: 10px;
+    right: 10px;
   }
-  
-  @media (min-width: 768px) {
-    .bookGallery {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .bookImage {
-      height: 165px;
-    }
-  }
-  
-  @media (max-width: 560px) {
-    .bookCard,
-    .inspirationCard {
-      padding: 16px;
-    }
-  
-    .bookImage {
-      height: 150px;
-    }
-  
-    .inspirationName {
-      font-size: 18px;
-    }
-  }
+}

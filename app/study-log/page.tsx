@@ -17,28 +17,35 @@ export default async function StudyLogPage() {
         </h1>
 
         <p className={commonStyles.heroSubtitle}>
-          Learning records from microCMS API
+          Learning records powered by microCMS API
         </p>
 
         <p className={commonStyles.heroLead}>
           学習した内容や制作の記録を、microCMSのAPIから取得して表示しています。
+          フロントエンド、バックエンド、アプリ開発などの学習過程をまとめています。
         </p>
       </section>
 
       {/* Study Log List */}
       <section className={commonStyles.block}>
-        <h2 className={commonStyles.blockTitle}>Learning Records</h2>
+        <div className={studyStyles.sectionHeader}>
+          <div>
+            <h2 className={commonStyles.blockTitle}>Learning Records</h2>
 
-        <p className={commonStyles.blockText}>
-          参考書、Web制作、アプリ開発、デザイン、3D制作など、
-          これまで取り組んできた学習内容をまとめています。
-        </p>
+            <p className={commonStyles.blockText}>
+              参考書、Web制作、アプリ開発、デザイン、3D制作など、
+              これまで取り組んできた学習内容を記録しています。
+            </p>
+          </div>
+
+          <p className={studyStyles.count}>{studyLogs.length} logs</p>
+        </div>
 
         {studyLogs.length > 0 ? (
           <div className={studyStyles.studyGrid}>
             {studyLogs.map((log) => (
               <article key={log.id} className={studyStyles.studyCard}>
-                {log.image?.url && (
+                {log.image?.url ? (
                   <Image
                     src={log.image.url}
                     alt={log.title}
@@ -46,34 +53,40 @@ export default async function StudyLogPage() {
                     height={log.image.height}
                     className={studyStyles.studyImage}
                   />
+                ) : (
+                  <div className={studyStyles.imagePlaceholder}>
+                    No Image
+                  </div>
                 )}
 
-                <h3 className={studyStyles.studyTitle}>{log.title}</h3>
+                <div className={studyStyles.studyContent}>
+                  {log.category && (
+                    <p className={studyStyles.studyCategory}>
+                      {log.category}
+                    </p>
+                  )}
 
-                {log.category && (
-                  <p className={studyStyles.studyCategory}>
-                    Category: {log.category}
-                  </p>
-                )}
+                  <h3 className={studyStyles.studyTitle}>{log.title}</h3>
 
-                {log.description && (
-                  <p className={studyStyles.studyText}>{log.description}</p>
-                )}
+                  {log.description && (
+                    <p className={studyStyles.studyText}>{log.description}</p>
+                  )}
 
-                {log.tags && log.tags.length > 0 && (
-                  <ul className={studyStyles.studyTags}>
-                    {log.tags.map((tag) => (
-                      <li key={tag} className={studyStyles.studyTag}>
-                        {tag}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                  {log.tags && log.tags.length > 0 && (
+                    <ul className={studyStyles.studyTags}>
+                      {log.tags.map((tag) => (
+                        <li key={tag} className={studyStyles.studyTag}>
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
               </article>
             ))}
           </div>
         ) : (
-          <p className={commonStyles.blockText}>
+          <p className={studyStyles.emptyText}>
             現在、学習記録は登録されていません。
           </p>
         )}

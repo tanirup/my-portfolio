@@ -24,17 +24,17 @@ export default function AboutPage() {
               フロントエンドを軸に、バックエンドやデータベースも含めた開発に取り組んでいます。
             </p>
           </div>
-
           <div className={aboutStyles.profileImageWrap}>
             <Image
-              src="/profile/profile.jpg"
-              alt="Yuki Taniuchi profile photo"
-              width={220}
-              height={220}
+              src="/images/dog1.png"
+              alt="プロフィール画像の犬"
+              fill
+              sizes="220px"
               className={aboutStyles.profileImage}
               priority
-            />
+             />
           </div>
+
         </div>
       </section>
 

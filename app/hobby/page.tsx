@@ -3,6 +3,31 @@ import Link from "next/link";
 import commonStyles from "../page.module.css";
 import hobbyStyles from "./page.module.css";
 import TypewriterText from "../components/animation/TypewriterText";
+import ReadingGallery from "./ReadingGallery";
+
+const games = [
+  {
+    src: "/images/games/acecombat8.png",
+    alt: "ACE COMBAT 8のパッケージ画像",
+    tag: "Flight Shooting",
+    title: "10月2日発売・・・ACE COMBAT 8",
+    text: "戦闘機による空中戦やスピード感のある演出に興味があります。映像表現やUI、操作感なども参考にしたい作品です。、私はacecombatシリーズの大ファンなので、今作は特に楽しみにしています。",
+  },
+  {
+    src: "/images/games/FE.png",
+    alt: "Fire Emblemのパッケージ画像",
+    tag: "Simulation RPG",
+    title: "9月17日発売・・・Fire Emblem",
+    text: "キャラクター、戦略性、世界観の見せ方に魅力を感じています。UIや成長システム、物語の構成にも注目しています。FEシリーズは、過去作も何本かやりこんでやっているので、今作も新しいスキルなど追加らしいので楽しみです",
+  },
+  {
+    src: "/images/games/phantom.png",
+    alt: "PHANTOM BLADE 0のキービジュアル",
+    tag: "Action RPG",
+    title: "10月後半・・・PHANTOM BLADE 0",
+    text: "ダークな世界観やアクション演出に惹かれています。ビジュアルの作り込みやゲーム全体の雰囲気に興味があります。死にゲー系のアクションゲームで、ダークな感じと戦闘スタイルがすごく好きです。ぜひ遊んで見たい作品です。",
+  },
+];
 
 export default function HobbyPage() {
   return (
@@ -33,61 +58,52 @@ export default function HobbyPage() {
           技術的な視点でもゲームを見るようになりました。
           使用されているゲームエンジンやツール、プログラミング言語についても調べるようにしています。
         </p>
-      </section>
 
-      {/* Reading */}
-      <section className={commonStyles.block}>
-        <h2 className={commonStyles.blockTitle}>Reading</h2>
-
-        <p className={commonStyles.blockText}>
-          技術書やビジネス書を中心に読んでいます。
-          興味を持った分野は本でも調べながら、開発や資格の勉強に取り入れています。
-        </p>
-
-        <div className={hobbyStyles.bookGallery}>
-          <article className={hobbyStyles.bookCard}>
-            <Image
-              src="/hobby/books/book-01.webp"
-              alt="これまで勉強に使用した参考書"
-              width={600}
-              height={400}
-              className={hobbyStyles.bookImage}
-            />
-
-            <p className={hobbyStyles.bookCaption}>
-              ITや資格の勉強で使用してきた参考書
+        <div className={hobbyStyles.gameFeature}>
+          <div className={hobbyStyles.gameFeatureHeader}>
+            <p className={hobbyStyles.gameFeatureLabel}>Recently Interested</p>
+            <h3 className={hobbyStyles.gameFeatureTitle}>Games I want to play</h3>
+            <p className={hobbyStyles.gameFeatureText}>
+              最近気になっているゲームです。遊びたい理由だけでなく、
+              UI、世界観、演出、操作感なども意識して見ています。
             </p>
-          </article>
+          </div>
 
-          <article className={hobbyStyles.bookCard}>
-            <Image
-              src="/hobby/books/book-02.webp"
-              alt="プログラミングや開発に関する参考書"
-              width={600}
-              height={400}
-              className={hobbyStyles.bookImage}
-            />
+          <div className={hobbyStyles.gameGrid}>
+            {games.map((game) => (
+              <article key={game.title} className={hobbyStyles.gameCard}>
+                <div className={hobbyStyles.gameImageWrap}>
+                  <Image
+                    src={game.src}
+                    alt={game.alt}
+                    width={500}
+                    height={650}
+                    className={hobbyStyles.gameImage}
+                  />
+                </div>
 
-            <p className={hobbyStyles.bookCaption}>
-              プログラミングや開発技術について学んだ本
-            </p>
-          </article>
-
-          <article className={hobbyStyles.bookCard}>
-            <Image
-              src="/hobby/books/book-03.webp"
-              alt="読んできた本"
-              width={600}
-              height={400}
-              className={hobbyStyles.bookImage}
-            />
-
-            <p className={hobbyStyles.bookCaption}>
-              興味を持った分野について読んできた本
-            </p>
-          </article>
+                <div className={hobbyStyles.gameContent}>
+                  <p className={hobbyStyles.gameTag}>{game.tag}</p>
+                  <h4 className={hobbyStyles.gameTitle}>{game.title}</h4>
+                  <p className={hobbyStyles.gameText}>{game.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
+
+{/* Reading */}
+<section className={commonStyles.block}>
+  <h2 className={commonStyles.blockTitle}>Reading</h2>
+
+  <p className={commonStyles.blockText}>
+    技術書やビジネス書を中心に読んでいます。
+    興味を持った分野は本でも調べながら、開発や資格の勉強に取り入れています。
+  </p>
+
+  <ReadingGallery />
+</section>
 
       {/* Creative */}
       <section className={commonStyles.block}>
@@ -115,9 +131,7 @@ export default function HobbyPage() {
               Investor / Reader / Thinker
             </p>
 
-            <h3 className={hobbyStyles.inspirationName}>
-              Warren Buffett
-            </h3>
+            <h3 className={hobbyStyles.inspirationName}>Warren Buffett</h3>
 
             <p className={hobbyStyles.inspirationText}>
               図書館で本を探していたときに彼の本に出会い、投資に対する考え方や、
