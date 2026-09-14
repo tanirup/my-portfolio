@@ -36,7 +36,7 @@ dir
 ```
 でappやpublicのファイルが見えたらOK <br>
 my-portfolio-mainとpackage-lock.json 
-だけだったら・・・・ <br>
+だけだったら・・・・my-portfolio-main/my-portfolio-mainという可能性もあるので確かめて下さい。 <br>
 ```bash
 cd my-portfolio-main
 ```
