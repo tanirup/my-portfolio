@@ -1,5 +1,59 @@
 ## 実行方法
+## Windowsでnpmを使う手順
 
+### 1. Node.jsをインストール
+
+Windows用のx64版Node.jsをインストールする。
+https://nodejs.org/ja/download　<br> 
+node.js公式リンク
+### 2. PATHを設定
+windowsキーを押して検索のところに環境変数と入力する <br>
+設定画面に行ったら、ユーザー環境変数のところの編集をクリックして <br>
+以下のようなpathを追加してOKをおす。<br>
+環境変数 `Path` に以下を追加する。
+
+```text
+C:\Program Files\nodejs\
+```
+
+### 3. PowerShellの実行制限を変更
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+### 4. Node.js / npmを確認
+
+```powershell
+node -v
+npm -v
+```
+
+### 5. プロジェクトを起動
+'''bash
+dir
+''' 
+でappやpublicのファイルが見えたらOK <br>
+my-portfolio-mainとpackage-lock.json 
+だけだったら・・・・ <br>
+'''bash
+cd my-portfolio-main
+'''
+で移動してappやpublicファイルがあるかチェックする <br>
+`package.json` があるフォルダで実行する。
+
+```powershell
+npm install
+npm run dev
+```
+
+ブラウザで以下を開く。
+
+```text
+http://localhost:3000
+```
+
+## MAC実行方法
 ```bash
 npm install
 npm run dev
