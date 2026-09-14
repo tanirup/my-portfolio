@@ -1,6 +1,8 @@
 # 実行方法
-'''
+'''bash
 npm install
+'''
+'''bash
 npm run dev
 '''
 
