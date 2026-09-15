@@ -15,6 +15,7 @@ https://nodejs.org/ja/download
 Node.jsのインストール後、Windowsキーを押して「環境変数」と検索する。
 
 「環境変数」を開き、ユーザー環境変数の `Path` を編集して以下を追加する。
+編集　➡　新規で一番下に追加する　追加した後に下のOKを押さないと適応されていないことがあるので注意
 
 ```text
 C:\Program Files\nodejs\
