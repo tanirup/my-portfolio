@@ -124,9 +124,6 @@ Next.js / TypeScript を使用して制作したポートフォリオサイト�
 - Works  
   制作したWebサイトやアプリケーションを紹介しています。
 
-- Study Log  
-  microCMS API から取得した学習記録を表示しています。
-
 - Hobby  
   ゲーム、読書、制作活動、影響を受けた人物などを紹介しています。
 
@@ -139,7 +136,6 @@ Next.js / TypeScript を使用して制作したポートフォリオサイト�
 - React
 - TypeScript
 - CSS Modules
-- microCMS
 - Node.js
 - Git / GitHub
 - Vercel
@@ -151,9 +147,7 @@ Next.js / TypeScript を使用して制作したポートフォリオサイト�
 - ローディングアニメーション
 - Typewriter風テキストアニメーション
 - CSS Modules によるページごとのスタイル管理
-- microCMS API からの Study Log 取得
 - `next/image` を使用した画像最適化
-- 環境変数によるAPIキー管理
 
 ## 工夫した点
 ファイル構成・設計・見やすいUI/UXデザインなどを工夫して作りました。
